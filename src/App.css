@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.seeds, .garden {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.garden{
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
