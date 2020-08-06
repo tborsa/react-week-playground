@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
-const useMousePosition = (offset) => {
+const ShowMousePosition = () => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
-  
+
   useEffect(() => {
     document.addEventListener('mousemove', mousePosition => {
       setX(mousePosition.clientX);
@@ -11,11 +11,11 @@ const useMousePosition = (offset) => {
     })
   }, []);
 
-  return {
-    x,
-    y
-  }
-
+  return (
+    <div>
+      <h1>X: {x} Y: {y}</h1>
+    </div>
+  );
 };
 
-export default useMousePosition;
+export default ShowMousePosition;

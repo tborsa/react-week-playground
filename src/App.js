@@ -1,16 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
-import MousePosition from './components/MousePosition';
-import TextSize from './components/TextSize';
-import TextColor from './components/TextColor';
-import Garden from  './components/Garden';
+import ShowMousePosition from './components/ShowMousePosition';
+import MousePositionForSize from './components/MousePositionForSize';
+import MousePositionForColor from './components/MousePositionForColor';
+import GardenPlot from './components/GardenPlot';
+
 import './App.css';
 
 function App() {
   return (
     <>
-      <MousePosition></MousePosition>
-      <Garden></Garden>
+      <GardenPlot/>
     </>
   );
 }
