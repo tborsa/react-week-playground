@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import StaleState from './components/StaleState';
-import Logs from './components/Logs';
+import Plant from './components/Plant';
+import PlantList from './components/PlantList';
+import Garden from './components/Garden';
+import User from './components/User';
+
 import './App.css';
 
 function App() {
-  const [showComponent, setShowComponent] = useState(true);
-
   return (
     <>
-      <button onClick={() => setShowComponent(!showComponent)}>Toggle Show</button>
-      {showComponent && <StaleState/>}
+      <User/>
     </>
   );
 }
