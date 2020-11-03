@@ -1,42 +1,36 @@
 import React, {useEffect, useState} from 'react';
+import {BrowserRouter as Router, Route, Switch, Link, Vote} from 'react-router-dom';
+
+import DogContext from './contexts/DogContext';
 
 import './App.css';
 import './components/PointerPosition';
-import PointerPosition from './components/PointerPosition';
-import Timer from './components/Timer';
-import GetData from './components/GetData';
+import Screens from './screens';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("bob");
-  
-  
-  useEffect(() => {
-    console.log('count has changed', count);
-    // got a name
-  }, [count, name]);  // prevname == newName
-
-  useEffect(() => {
-    console.log('name has changed', name);
-  }, [name]);
-  
-  useEffect(() => {
-    // do side effects here
-    console.log('running side efffect');
-    document.title = 'TEST TITLE CHANGE';// work is done only when needed
-  }, []); //list of dependencies if empty the effect runs once when the component is first rendered
-
-  
+  const [dogList, setDogList] = useState(['floofer', 'spot']);
   return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>Add</button>
-      <h1>{name}</h1>
-      <button onClick={() => setName("sam")}>change name</button>
-      {count % 2 == 0 && <PointerPosition/>}
-      {<Timer/>}
-      {<GetData num={count} />}
-    </>
+    <DogContext.Provider value={{dogList, setDogList}}>
+      <Router>
+        <div style={{padding: "100px"}}>
+          <div style={{display: 'flex'}}>
+            {/* All LINK IMPORTANT */}
+            <Link to="/pokemon">pokemon</Link>
+            &nbsp;
+            <Link to="/about">about</Link>
+            &nbsp;
+            <Link to="/timer">timer</Link>
+            &nbsp;
+            <Link to="/vote">vote</Link>
+            &nbsp;
+            <Link to="/home">home</Link>
+            &nbsp;
+            <Link to="/dog">dogs</Link>
+          </div>
+          <Screens/>
+        </div>
+      </Router>
+    </DogContext.Provider>
   );
 }
 

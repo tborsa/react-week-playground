@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import DogContext from '../contexts/DogContext';
 
 const PointerPosition = () => {
   const [position, setPosition] = useState({x: 0, y: 0});
-
+  const {dogList} = useContext(DogContext);
   useEffect(() => {
     // update state
     const listener = mousePosition => {
@@ -20,6 +21,7 @@ const PointerPosition = () => {
   return (
     <div>
       <h2>Mouse Position</h2>
+      {dogList.map((dog) => <h2>{dog}</h2>)}
       <p style={{color: `rgb(${position.x}, ${position.y}, 100)`}}>
         x: {position.x} y: {position.y}
       </p>
