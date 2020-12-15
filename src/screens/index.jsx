@@ -1,21 +1,33 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import PokemonScreens from './Pokemon';
-import AboutScreens from './About';
 import DogScreens from './Dogs';
-import HomeScreens from './Home/Home.jsx';
-import VoteScreens from './Vote';
+import CatScreens from './Cats';
+import DolphinScreens from './Dolphins';
+import DinosaurScreens from './Dinosaurs';
+import Tigers from './Tigers';
+import Hamsters from './Hamsters';
+import Turtles from './Turtles';
+import GhostScreen from './Ghost';
+import lions from './Lions';
+import Ants from './Ants';
+import SharkScreens from './Sharks';
 
 const index = () => {
   return (
     <Switch>
       {/* All routes IMPORTANT */}
       {[
-        ...AboutScreens,
         ...DogScreens,
-        ...HomeScreens,
-        ...VoteScreens,
-        ...PokemonScreens,
+        ...CatScreens,
+        ...DolphinScreens,
+        ...DinosaurScreens,
+        ...Tigers,
+        ...Hamsters,
+        ...Turtles,
+        ...GhostScreen,
+        ...SharkScreens,
+        ...lions,
+        ...Ants
       ]}
       <Route path="/">
         <h1>404 not found</h1>

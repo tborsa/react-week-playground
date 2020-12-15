@@ -4,9 +4,9 @@ import Dogs from '../../components/Dogs';
 
 export default [
   <Route path="/dogs">
-    <Dogs />
+    <Slightly_Larger_Dogs />
   </Route>,
   <Route path="/dogs/:id">
-    <Dogs />
+    <Slightly_Larger_Dogs />
   </Route>
 ]
