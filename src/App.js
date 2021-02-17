@@ -1,43 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './App.css';
-import './components/PointerPosition';
-import PointerPosition from './components/PointerPosition';
-import Timer from './components/Timer';
-import GetData from './components/GetData';
+import CounterLogs from './components/CounterLogs';
+import ShowMousePosition from './components/ShowMousePosition';
+import CountDown from './components/CountDown';
+import Pokedex from './components/Pokedex';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("bob");
-  
-  
+  const [showComponent, setShowComponent] = useState(true);
+  const [start, setStart] = useState(10);
   useEffect(() => {
-    console.log('count has changed', count);
-    // got a name
-  }, [count, name]);  // prevname == newName
+    // behaviour to run, define the side effect
+    document.title = "hello wold app"; //<= the side effect
+  }, []); //empty dependency array means run once on first render
 
-  useEffect(() => {
-    console.log('name has changed', name);
-  }, [name]);
-  
-  useEffect(() => {
-    // do side effects here
-    console.log('running side efffect');
-    document.title = 'TEST TITLE CHANGE';// work is done only when needed
-  }, []); //list of dependencies if empty the effect runs once when the component is first rendered
-
-  
   return (
-    <>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>Add</button>
-      <h1>{name}</h1>
-      <button onClick={() => setName("sam")}>change name</button>
-      {count % 2 == 0 && <PointerPosition/>}
-      {<Timer/>}
-      {<GetData num={count} />}
-    </>
+    <div style={{padding: '30px'}}>
+      <h1>Hello World</h1>
+      <Pokedex/>
+    </div>
   );
 }
-
+ 
 export default App;
