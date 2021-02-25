@@ -1,25 +1,24 @@
 import React, {useState, useEffect} from 'react';
 
 import './App.css';
-import CounterLogs from './components/CounterLogs';
-import ShowMousePosition from './components/ShowMousePosition';
-import CountDown from './components/CountDown';
-import Pokedex from './components/Pokedex';
+import ClassPokedex from './components/ClassPokedex';
 
-function App() {
-  const [showComponent, setShowComponent] = useState(true);
-  const [start, setStart] = useState(10);
-  useEffect(() => {
-    // behaviour to run, define the side effect
-    document.title = "hello wold app"; //<= the side effect
-  }, []); //empty dependency array means run once on first render
-
-  return (
-    <div style={{padding: '30px'}}>
-      <h1>Hello World</h1>
-      <Pokedex/>
-    </div>
-  );
+class App extends React.Component { // initialized once
+  state = {
+    show: true
+  }
+  toggle = () => {
+    this.setState({show: !this.state.show});
+  }
+  render () { // called once per render
+    return (
+      <div style={{padding: '30px'}}>
+        <h1>Hello World</h1>
+        <button onClick={this.toggle}>toggle pokedex</button>
+        {this.state.show && <ClassPokedex startPokemon="mew" test="5"/>}
+      </div>
+    );
+  }
 }
  
 export default App;
