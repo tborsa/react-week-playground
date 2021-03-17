@@ -1,35 +1,32 @@
 import React, {useState, useEffect} from 'react'
 
+// timer = 30
 export default function CountDown({start}) {
-    const [count, setCount] = useState(start); //10
-    const [reset, setReset] = useState(0);
-    // count is a snapshot of state
-    // count = 10
+    const [timer, setTimer] = useState(30);
+    // CountDown2 = 29
     useEffect(() => {
-        console.log('restarting counter');
-        setCount(start); //only happens when dep array changes
-        const countDown = setInterval(() => {
-            //setCount(count - 1); //lead to stale state (looking at old snapshots of state)
-            // functional set state
-            setCount((current) => {
-                return current -1; //returning the new versions of state
-            });
+        console.log('run once');
+        // setTimer(start);
+        const interval = setInterval(() => {
+            console.log('count down', timer);
+            //timer = 30 snapshot
+            // want the current version of timer
+            // setTimer(timer -1); X
+            setTimer((currentState) => {
+                //current state is the most up to date version of timer
+                console.log('current timer', currentState);
+                return currentState - 1;
+            }); //29
         }, 1000);
-        // cleanup
-        // remove the effects of the previous effect before calling the effect again
+
         return () => {
-            // this function will be run between calls of useEffect
-            // or on an unmount
-            console.log("cleanup function called");
-            clearInterval(countDown);
+            // cleanup the interval
         }
-    }, [reset, start]); //once on the first function run
+    }, []); //only run this once
 
     return (
         <div>
-            <h2>CountDown</h2>
-            <p>{count}</p>
-            <button onClick={() => setReset(reset +1)}>reset</button>
+            <h2>Time: {timer}</h2>
         </div>
     )
 }
